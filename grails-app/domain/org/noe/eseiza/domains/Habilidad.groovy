@@ -1,4 +1,4 @@
-package org.noe.eseiza.db.domain
+package org.noe.eseiza.domains
 
 class Habilidad {
     String habilidad
@@ -6,6 +6,8 @@ class Habilidad {
     Certificacion certificacion
     static constraints = {
         certificacion blank:true, nullable: true
+        descripcion blank : false
+        habilidad blank : false
     }
     
     String  toString(){

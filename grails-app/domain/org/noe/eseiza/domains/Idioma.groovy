@@ -1,9 +1,11 @@
-package org.noe.eseiza.db.domain
+package org.noe.eseiza.domains
 
 class Idioma {
     String idioma
     Certificacion certificacion
     static constraints = {
+        idioma blank : false
+        certificacion blank : true
     }
     static mapping = {
         version false

@@ -1,8 +1,9 @@
-package org.noe.eseiza.db.domain
+package org.noe.eseiza.domains
 
 class Institucion {
     String institucion
     static constraints = {
+        institucion blank : false
     }
     static mapping = {
         version false

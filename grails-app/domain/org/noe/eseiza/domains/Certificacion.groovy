@@ -1,4 +1,4 @@
-package org.noe.eseiza.db.domain
+package org.noe.eseiza.domains
 
 class Certificacion {
     String nivel
@@ -6,6 +6,10 @@ class Certificacion {
     Calendar termino
     String nombre
     static constraints = {
+        nivel blank:false
+        realizacion blank:false
+        termino blank:false
+        nombre blank:false
     }
     static mapping = {
         version false

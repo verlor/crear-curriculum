@@ -1,4 +1,4 @@
-package org.noe.eseiza.db.domain
+package org.noe.eseiza.domains
 
 class Contacto {
     String telefonoCelular
@@ -7,6 +7,9 @@ class Contacto {
     
     
     static constraints = {
+        telefonoCelular blank : false
+        telefonoLocal blank : false
+        mail email:true, blank : false
     }
     
     String  toString(){

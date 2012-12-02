@@ -1,4 +1,4 @@
-package org.noe.eseiza.db.domain
+package org.noe.eseiza.domains
 
 class Condicion {
     String prestaciones
@@ -7,6 +7,10 @@ class Condicion {
     String diasLaborables
     
     static constraints = {
+        prestaciones blank:false
+        sueldo range : 0..200000
+        puesto blank : false
+        diasLaborables blank : false
     }
     static mapping = {
         version false

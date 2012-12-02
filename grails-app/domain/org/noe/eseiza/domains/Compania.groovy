@@ -1,4 +1,4 @@
-package org.noe.eseiza.db.domain
+package org.noe.eseiza.domains
 
 class Compania {
     String telefono
@@ -7,6 +7,9 @@ class Compania {
     static hasMany = [logros:Logro]
     static constraints = {
         logros blank : true
+        nombre blank : false
+        descripcion blank : false
+        telefono blank : false
     }
     static mapping = {
         version false

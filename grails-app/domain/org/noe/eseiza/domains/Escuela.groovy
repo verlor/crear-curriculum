@@ -1,4 +1,4 @@
-package org.noe.eseiza.db.domain
+package org.noe.eseiza.domains
 
 class Escuela {
     String escuela
@@ -12,6 +12,12 @@ class Escuela {
     
     static constraints = {
         logros blank : true
+        escuela blank : false
+        tiempoCursado blank : false, range : 0..15
+        grado blank : false
+        promedio blank : false, range : 6.0..10.0
+        institucion blank : false
+        graduacion blank : false
     }
     static mapping = {
         version false
