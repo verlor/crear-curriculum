@@ -41,6 +41,42 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${userInstance?.condicion}">
+				<li class="fieldcontain">
+					<span id="condicion-label" class="property-label"><g:message code="user.condicion.label" default="Condicion" /></span>
+					
+						<span class="property-value" aria-labelledby="condicion-label"><g:link controller="condicion" action="show" id="${userInstance?.condicion?.id}">${userInstance?.condicion?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${userInstance?.contacto}">
+				<li class="fieldcontain">
+					<span id="contacto-label" class="property-label"><g:message code="user.contacto.label" default="Contacto" /></span>
+					
+						<span class="property-value" aria-labelledby="contacto-label"><g:link controller="contacto" action="show" id="${userInstance?.contacto?.id}">${userInstance?.contacto?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${userInstance?.direccion}">
+				<li class="fieldcontain">
+					<span id="direccion-label" class="property-label"><g:message code="user.direccion.label" default="Direccion" /></span>
+					
+						<span class="property-value" aria-labelledby="direccion-label"><g:link controller="direccion" action="show" id="${userInstance?.direccion?.id}">${userInstance?.direccion?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${userInstance?.nombre}">
+				<li class="fieldcontain">
+					<span id="nombre-label" class="property-label"><g:message code="user.nombre.label" default="Nombre" /></span>
+					
+						<span class="property-value" aria-labelledby="nombre-label"><g:fieldValue bean="${userInstance}" field="nombre"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${userInstance?.accountExpired}">
 				<li class="fieldcontain">
 					<span id="accountExpired-label" class="property-label"><g:message code="user.accountExpired.label" default="Account Expired" /></span>
@@ -59,11 +95,66 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${userInstance?.companias}">
+				<li class="fieldcontain">
+					<span id="companias-label" class="property-label"><g:message code="user.companias.label" default="Companias" /></span>
+					
+						<g:each in="${userInstance.companias}" var="c">
+						<span class="property-value" aria-labelledby="companias-label"><g:link controller="compania" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></span>
+						</g:each>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${userInstance?.enabled}">
 				<li class="fieldcontain">
 					<span id="enabled-label" class="property-label"><g:message code="user.enabled.label" default="Enabled" /></span>
 					
 						<span class="property-value" aria-labelledby="enabled-label"><g:formatBoolean boolean="${userInstance?.enabled}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${userInstance?.escuelas}">
+				<li class="fieldcontain">
+					<span id="escuelas-label" class="property-label"><g:message code="user.escuelas.label" default="Escuelas" /></span>
+					
+						<g:each in="${userInstance.escuelas}" var="e">
+						<span class="property-value" aria-labelledby="escuelas-label"><g:link controller="escuela" action="show" id="${e.id}">${e?.encodeAsHTML()}</g:link></span>
+						</g:each>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${userInstance?.habilidades}">
+				<li class="fieldcontain">
+					<span id="habilidades-label" class="property-label"><g:message code="user.habilidades.label" default="Habilidades" /></span>
+					
+						<g:each in="${userInstance.habilidades}" var="h">
+						<span class="property-value" aria-labelledby="habilidades-label"><g:link controller="habilidad" action="show" id="${h.id}">${h?.encodeAsHTML()}</g:link></span>
+						</g:each>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${userInstance?.idiomas}">
+				<li class="fieldcontain">
+					<span id="idiomas-label" class="property-label"><g:message code="user.idiomas.label" default="Idiomas" /></span>
+					
+						<g:each in="${userInstance.idiomas}" var="i">
+						<span class="property-value" aria-labelledby="idiomas-label"><g:link controller="idioma" action="show" id="${i.id}">${i?.encodeAsHTML()}</g:link></span>
+						</g:each>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${userInstance?.nacionalidades}">
+				<li class="fieldcontain">
+					<span id="nacionalidades-label" class="property-label"><g:message code="user.nacionalidades.label" default="Nacionalidades" /></span>
+					
+						<g:each in="${userInstance.nacionalidades}" var="n">
+						<span class="property-value" aria-labelledby="nacionalidades-label"><g:link controller="nacionalidad" action="show" id="${n.id}">${n?.encodeAsHTML()}</g:link></span>
+						</g:each>
 					
 				</li>
 				</g:if>
