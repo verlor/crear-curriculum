@@ -2,11 +2,13 @@ package org.noe.eseiza.domains
 
 import org.springframework.dao.DataIntegrityViolationException
 import grails.plugins.springsecurity.Secured
+import org.noe.eseiza.security.domains.User
 
 @Secured(['ROLE_USER'])
 
 class EscuelaController {
 
+    def springSecurityService
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def index() {
@@ -24,13 +26,14 @@ class EscuelaController {
 
     def save() {
         def escuelaInstance = new Escuela(params)
+        User user = springSecurityService.currentUser
         if (!escuelaInstance.save(flush: true)) {
             render(view: "create", model: [escuelaInstance: escuelaInstance])
             return
         }
-
+        user.addToEscuelas(escuelaInstance)
         flash.message = message(code: 'default.created.message', args: [message(code: 'escuela.label', default: 'Escuela'), escuelaInstance.id])
-        redirect(action: "show", id: escuelaInstance.id)
+        redirect(action: "create")
     }
 
     def show(Long id) {

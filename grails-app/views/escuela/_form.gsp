@@ -1,15 +1,6 @@
 <%@ page import="org.noe.eseiza.domains.Escuela" %>
 
 
-
-<div class="fieldcontain ${hasErrors(bean: escuelaInstance, field: 'logros', 'error')} ">
-	<label for="logros">
-		<g:message code="escuela.logros.label" default="Logros" />
-		
-	</label>
-	<g:select name="logros" from="${org.noe.eseiza.domains.Logro.list()}" multiple="multiple" optionKey="id" size="5" value="${escuelaInstance?.logros*.id}" class="many-to-many"/>
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: escuelaInstance, field: 'escuela', 'error')} required">
 	<label for="escuela">
 		<g:message code="escuela.escuela.label" default="Escuela" />

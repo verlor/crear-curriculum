@@ -2,11 +2,13 @@ package org.noe.eseiza.domains
 
 import org.springframework.dao.DataIntegrityViolationException
 import grails.plugins.springsecurity.Secured
+import org.noe.eseiza.security.domains.User
 
 @Secured(['ROLE_USER'])
 
 class HabilidadController {
 
+    def springSecurityService
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def index() {
@@ -24,13 +26,14 @@ class HabilidadController {
 
     def save() {
         def habilidadInstance = new Habilidad(params)
+        User user = springSecurityService.currentUser
         if (!habilidadInstance.save(flush: true)) {
             render(view: "create", model: [habilidadInstance: habilidadInstance])
             return
         }
-
+        user.addToHabilidades(habilidadInstance)
         flash.message = message(code: 'default.created.message', args: [message(code: 'habilidad.label', default: 'Habilidad'), habilidadInstance.id])
-        redirect(action: "show", id: habilidadInstance.id)
+        redirect(action: "create")
     }
 
     def show(Long id) {

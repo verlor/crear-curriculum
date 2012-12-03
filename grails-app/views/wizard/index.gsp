@@ -28,12 +28,12 @@
         <span class="a-btn-text"><small>Crear</small>Curriculum</span> 
       </a>
 
-      <a href="#" class="a-btn">
+      <a href="${createLink(controller:'wizard', action: 'curriculum')}" class="a-btn">
         <img src="${resource(dir: 'images/button/icons', file: '12.png')}" alt="Photos" />
         <span class="a-btn-text"><small>Modificar</small>Curriculum</span> 
       </a>
 
-      <a href="#" class="a-btn">
+      <a href="/curriculums/wizard/curriculumAPdf?user=<sec:loggedInUserInfo field='id'/>" class="a-btn">
         <img src="${resource(dir: 'images/button/icons', file: '17.png')}" alt="Photos" />
         <span class="a-btn-text"><small>Descargar</small>Curriculum</span> 
       </a>

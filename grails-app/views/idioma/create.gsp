@@ -32,6 +32,8 @@
 				</fieldset>
 				<fieldset class="buttons">
 					<g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+                                        <a class="home" href="${createLink(uri:'/')}">Terminar</a>
+                                        <span class="progressBar" style="float: right;">98%</span>
 				</fieldset>
 			</g:form>
 		</div>

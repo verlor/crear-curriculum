@@ -1,15 +1,6 @@
 <%@ page import="org.noe.eseiza.domains.Habilidad" %>
 
 
-
-<div class="fieldcontain ${hasErrors(bean: habilidadInstance, field: 'certificacion', 'error')} ">
-	<label for="certificacion">
-		<g:message code="habilidad.certificacion.label" default="Certificacion" />
-		
-	</label>
-	<g:select id="certificacion" name="certificacion.id" from="${org.noe.eseiza.domains.Certificacion.list()}" optionKey="id" value="${habilidadInstance?.certificacion?.id}" class="many-to-one" noSelection="['null': '']"/>
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: habilidadInstance, field: 'descripcion', 'error')} required">
 	<label for="descripcion">
 		<g:message code="habilidad.descripcion.label" default="Descripcion" />
