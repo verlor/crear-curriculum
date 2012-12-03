@@ -26,11 +26,11 @@
 					
 						<g:sortableColumn property="codigoPostal" title="${message(code: 'direccion.codigoPostal.label', default: 'Codigo Postal')}" />
 					
-						<g:sortableColumn property="numero" title="${message(code: 'direccion.numero.label', default: 'Numero')}" />
-					
 						<g:sortableColumn property="calle" title="${message(code: 'direccion.calle.label', default: 'Calle')}" />
 					
 						<th><g:message code="direccion.estado.label" default="Estado" /></th>
+					
+						<g:sortableColumn property="numero" title="${message(code: 'direccion.numero.label', default: 'Numero')}" />
 					
 					</tr>
 				</thead>
@@ -40,11 +40,11 @@
 					
 						<td><g:link action="show" id="${direccionInstance.id}">${fieldValue(bean: direccionInstance, field: "codigoPostal")}</g:link></td>
 					
-						<td>${fieldValue(bean: direccionInstance, field: "numero")}</td>
-					
 						<td>${fieldValue(bean: direccionInstance, field: "calle")}</td>
 					
 						<td>${fieldValue(bean: direccionInstance, field: "estado")}</td>
+					
+						<td>${fieldValue(bean: direccionInstance, field: "numero")}</td>
 					
 					</tr>
 				</g:each>

@@ -1,8 +1,14 @@
 package org.noe.eseiza.domains
 
 import org.springframework.dao.DataIntegrityViolationException
+import grails.plugins.springsecurity.Secured
+import org.noe.eseiza.security.domains.User
+
+@Secured(['ROLE_USER'])
 
 class ContactoController {
+    
+    def springSecurityService
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
@@ -21,13 +27,14 @@ class ContactoController {
 
     def save() {
         def contactoInstance = new Contacto(params)
+        User user = springSecurityService.currentUser
         if (!contactoInstance.save(flush: true)) {
             render(view: "create", model: [contactoInstance: contactoInstance])
             return
         }
-
+        user.setContacto(contactoInstance)        
         flash.message = message(code: 'default.created.message', args: [message(code: 'contacto.label', default: 'Contacto'), contactoInstance.id])
-        redirect(action: "show", id: contactoInstance.id)
+        redirect(controller: 'direccion', action: 'create')
     }
 
     def show(Long id) {

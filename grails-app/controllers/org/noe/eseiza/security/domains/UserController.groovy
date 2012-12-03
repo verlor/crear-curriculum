@@ -1,7 +1,6 @@
 package org.noe.eseiza.security.domains
 
 import org.springframework.dao.DataIntegrityViolationException
-import grails.plugins.springsecurity.Secured
 
 class UserController {
 
@@ -10,14 +9,11 @@ class UserController {
     def index() {
         redirect(action: "list", params: params)
     }
-    
-    @Secured(['ROLE_ADMIN'])
+
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         [userInstanceList: User.list(params), userInstanceTotal: User.count()]
     }
-    
-    
 
     def create() {
         [userInstance: new User(params)]
@@ -25,7 +21,7 @@ class UserController {
 
     def save() {
         def userInstance = new User(params)
-        def role = Role.findByAuthority("ROLE_USER")        
+        def role = Role.findByAuthority("ROLE_USER")
         userInstance.setEnabled(true)
         if (!userInstance.save(flush: true)) {
             render(view: "create", model: [userInstance: userInstance])
@@ -35,8 +31,7 @@ class UserController {
         flash.message = message(code: 'default.created.message', args: [message(code: 'user.label', default: 'User'), userInstance.id])
         redirect(action: "show", id: userInstance.id)
     }
-    
-    @Secured(['ROLE_ADMIN'])
+
     def show(Long id) {
         def userInstance = User.get(id)
         if (!userInstance) {

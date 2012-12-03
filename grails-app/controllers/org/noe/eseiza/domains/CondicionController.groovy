@@ -1,9 +1,14 @@
 package org.noe.eseiza.domains
 
 import org.springframework.dao.DataIntegrityViolationException
+import grails.plugins.springsecurity.Secured
+import org.noe.eseiza.security.domains.User
+
+@Secured(['ROLE_USER'])
 
 class CondicionController {
-
+    
+    def springSecurityService
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def index() {
@@ -21,13 +26,14 @@ class CondicionController {
 
     def save() {
         def condicionInstance = new Condicion(params)
+        User user = springSecurityService.currentUser
         if (!condicionInstance.save(flush: true)) {
             render(view: "create", model: [condicionInstance: condicionInstance])
             return
         }
-
+        user.setCondicion(condicionInstance)
         flash.message = message(code: 'default.created.message', args: [message(code: 'condicion.label', default: 'Condicion'), condicionInstance.id])
-        redirect(action: "show", id: condicionInstance.id)
+        redirect(controller: 'escuela', action: 'create')
     }
 
     def show(Long id) {

@@ -7,7 +7,6 @@ class Direccion {
     Estado estado
     static constraints = {
         codigoPostal blank : false
-        numero blank : false, range : 0..10000
         calle blank : false
         estado blank : false
     }

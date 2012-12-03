@@ -32,15 +32,6 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${direccionInstance?.numero}">
-				<li class="fieldcontain">
-					<span id="numero-label" class="property-label"><g:message code="direccion.numero.label" default="Numero" /></span>
-					
-						<span class="property-value" aria-labelledby="numero-label"><g:fieldValue bean="${direccionInstance}" field="numero"/></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${direccionInstance?.calle}">
 				<li class="fieldcontain">
 					<span id="calle-label" class="property-label"><g:message code="direccion.calle.label" default="Calle" /></span>
@@ -55,6 +46,15 @@
 					<span id="estado-label" class="property-label"><g:message code="direccion.estado.label" default="Estado" /></span>
 					
 						<span class="property-value" aria-labelledby="estado-label"><g:link controller="estado" action="show" id="${direccionInstance?.estado?.id}">${direccionInstance?.estado?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${direccionInstance?.numero}">
+				<li class="fieldcontain">
+					<span id="numero-label" class="property-label"><g:message code="direccion.numero.label" default="Numero" /></span>
+					
+						<span class="property-value" aria-labelledby="numero-label"><g:fieldValue bean="${direccionInstance}" field="numero"/></span>
 					
 				</li>
 				</g:if>

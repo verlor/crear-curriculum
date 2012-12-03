@@ -10,14 +10,6 @@
 	<g:field name="codigoPostal" type="number" value="${direccionInstance.codigoPostal}" required=""/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: direccionInstance, field: 'numero', 'error')} required">
-	<label for="numero">
-		<g:message code="direccion.numero.label" default="Numero" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select name="numero" from="${0..10000}" class="range" required="" value="${fieldValue(bean: direccionInstance, field: 'numero')}"/>
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: direccionInstance, field: 'calle', 'error')} required">
 	<label for="calle">
 		<g:message code="direccion.calle.label" default="Calle" />
@@ -32,5 +24,13 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<g:select id="estado" name="estado.id" from="${org.noe.eseiza.domains.Estado.list()}" optionKey="id" required="" value="${direccionInstance?.estado?.id}" class="many-to-one"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: direccionInstance, field: 'numero', 'error')} required">
+	<label for="numero">
+		<g:message code="direccion.numero.label" default="Numero" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:field name="numero" type="number" value="${direccionInstance.numero}" required=""/>
 </div>
 

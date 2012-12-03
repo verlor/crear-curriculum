@@ -10,14 +10,6 @@
 	<g:textField name="prestaciones" required="" value="${condicionInstance?.prestaciones}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: condicionInstance, field: 'sueldo', 'error')} required">
-	<label for="sueldo">
-		<g:message code="condicion.sueldo.label" default="Sueldo" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select name="sueldo" from="${0..200000}" class="range" required="" value="${fieldValue(bean: condicionInstance, field: 'sueldo')}"/>
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: condicionInstance, field: 'puesto', 'error')} required">
 	<label for="puesto">
 		<g:message code="condicion.puesto.label" default="Puesto" />
@@ -32,5 +24,13 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<g:textField name="diasLaborables" required="" value="${condicionInstance?.diasLaborables}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: condicionInstance, field: 'sueldo', 'error')} required">
+	<label for="sueldo">
+		<g:message code="condicion.sueldo.label" default="Sueldo" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:field name="sueldo" type="number" value="${condicionInstance.sueldo}" required=""/>
 </div>
 

@@ -32,15 +32,6 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${condicionInstance?.sueldo}">
-				<li class="fieldcontain">
-					<span id="sueldo-label" class="property-label"><g:message code="condicion.sueldo.label" default="Sueldo" /></span>
-					
-						<span class="property-value" aria-labelledby="sueldo-label"><g:fieldValue bean="${condicionInstance}" field="sueldo"/></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${condicionInstance?.puesto}">
 				<li class="fieldcontain">
 					<span id="puesto-label" class="property-label"><g:message code="condicion.puesto.label" default="Puesto" /></span>
@@ -55,6 +46,15 @@
 					<span id="diasLaborables-label" class="property-label"><g:message code="condicion.diasLaborables.label" default="Dias Laborables" /></span>
 					
 						<span class="property-value" aria-labelledby="diasLaborables-label"><g:fieldValue bean="${condicionInstance}" field="diasLaborables"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${condicionInstance?.sueldo}">
+				<li class="fieldcontain">
+					<span id="sueldo-label" class="property-label"><g:message code="condicion.sueldo.label" default="Sueldo" /></span>
+					
+						<span class="property-value" aria-labelledby="sueldo-label"><g:fieldValue bean="${condicionInstance}" field="sueldo"/></span>
 					
 				</li>
 				</g:if>

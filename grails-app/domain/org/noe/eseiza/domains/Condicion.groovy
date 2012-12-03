@@ -8,7 +8,6 @@ class Condicion {
     
     static constraints = {
         prestaciones blank:false
-        sueldo range : 0..200000
         puesto blank : false
         diasLaborables blank : false
     }

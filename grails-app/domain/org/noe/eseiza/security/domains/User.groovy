@@ -28,6 +28,7 @@ class User {
     }
 
     static mapping = {
+        version false
         password column: '`password`'
     }
 

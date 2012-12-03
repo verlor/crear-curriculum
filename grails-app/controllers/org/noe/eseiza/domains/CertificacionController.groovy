@@ -1,7 +1,9 @@
 package org.noe.eseiza.domains
 
 import org.springframework.dao.DataIntegrityViolationException
+import grails.plugins.springsecurity.Secured
 
+@Secured(['ROLE_USER'])
 class CertificacionController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -9,7 +11,8 @@ class CertificacionController {
     def index() {
         redirect(action: "list", params: params)
     }
-
+    
+    @Secured(['ROLE_ADMIN'])
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         [certificacionInstanceList: Certificacion.list(params), certificacionInstanceTotal: Certificacion.count()]

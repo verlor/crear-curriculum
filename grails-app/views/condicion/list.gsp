@@ -26,11 +26,11 @@
 					
 						<g:sortableColumn property="prestaciones" title="${message(code: 'condicion.prestaciones.label', default: 'Prestaciones')}" />
 					
-						<g:sortableColumn property="sueldo" title="${message(code: 'condicion.sueldo.label', default: 'Sueldo')}" />
-					
 						<g:sortableColumn property="puesto" title="${message(code: 'condicion.puesto.label', default: 'Puesto')}" />
 					
 						<g:sortableColumn property="diasLaborables" title="${message(code: 'condicion.diasLaborables.label', default: 'Dias Laborables')}" />
+					
+						<g:sortableColumn property="sueldo" title="${message(code: 'condicion.sueldo.label', default: 'Sueldo')}" />
 					
 					</tr>
 				</thead>
@@ -40,11 +40,11 @@
 					
 						<td><g:link action="show" id="${condicionInstance.id}">${fieldValue(bean: condicionInstance, field: "prestaciones")}</g:link></td>
 					
-						<td>${fieldValue(bean: condicionInstance, field: "sueldo")}</td>
-					
 						<td>${fieldValue(bean: condicionInstance, field: "puesto")}</td>
 					
 						<td>${fieldValue(bean: condicionInstance, field: "diasLaborables")}</td>
+					
+						<td>${fieldValue(bean: condicionInstance, field: "sueldo")}</td>
 					
 					</tr>
 				</g:each>

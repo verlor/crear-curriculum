@@ -26,11 +26,3 @@
 	<g:field type="email" name="mail" required="" value="${contactoInstance?.mail}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: contactoInstance, field: 'redesSociales', 'error')} ">
-	<label for="redesSociales">
-		<g:message code="contacto.redesSociales.label" default="Redes Sociales" />
-		
-	</label>
-	<g:select name="redesSociales" from="${org.noe.eseiza.domains.RedSocial.list()}" multiple="multiple" optionKey="id" size="5" value="${contactoInstance?.redesSociales*.id}" class="many-to-many"/>
-</div>
-
