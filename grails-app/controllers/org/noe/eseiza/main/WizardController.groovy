@@ -10,6 +10,7 @@ class WizardController {
     
     @Secured(['ROLE_USER'])
     def index() { 
+        println(springSecurityService)
     }
     
     
