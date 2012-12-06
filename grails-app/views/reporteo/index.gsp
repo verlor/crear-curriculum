@@ -9,11 +9,7 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="layout" content="main">
-    <link rel="stylesheet" href="${resource(dir: 'css/button', file: 'demo.css')}" type="text/css">
-
-    <link rel="stylesheet" href="${resource(dir: 'css/button', file: 'style3.css')}" type="text/css">   
-    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css' />
+    <meta name="layout" content="main">    
     
     <script type="text/javascript">
       function cleanInput(id){
@@ -39,38 +35,32 @@
       <g:form action="idiomaNivelPdf" >
         <g:textField name="idioma" required="" value="Idioma" onClick="cleanInput('idoma')"/>
         <g:textField name="nivel" required="" value="Nivel"/>
-
         <g:submitButton name="Buscar" class="save" value="Buscar" />         
-
       </g:form>
-
-      <a href="#" onClick="dirigir('wizard','reportUno',['idioma','nivel'])" class="a-btn">          
-        <span class="a-btn-text">Buscar por idioma</span>         
-        <span class="a-btn-icon-right"></span><br />
-        <input id="idioma" type="text" />
-        <br />
-        <input id="nivel" type="text" />        
-      </a>
-
-      <a href="#" class="a-btn">
-        <span class="a-btn-text">Get an account</span>
-        <span class="a-btn-slide-text">Register now!</span>
-        <span class="a-btn-icon-right"><span></span></span>
-      </a>
-      <div class="clr"></div>
-    </div>
-    <div class="button-wrapper-large">	
-      <a href="#" class="a-btn">
-        <span class="a-btn-text">Become a member</span>
-        <span class="a-btn-slide-text">No hidden costs</span>
-        <span class="a-btn-icon-right"><span></span></span>
-      </a>
-      <a href="#" class="a-btn">
-        <span class="a-btn-text">Join the cause</span>
-        <span class="a-btn-slide-text">Join the rest</span>
-        <span class="a-btn-icon-right"><span></span></span>
-      </a>
-      <div class="clr"></div>
+      
+      <h1>Buscar por puesto</h1>
+      <g:form action="puestoPdf" >
+        <g:textField name="puesto" required="" value="Puesto" />
+        <g:submitButton name="Buscar" class="save" value="Buscar" />         
+      </g:form>
+      
+      <h1>Buscar por sueldo</h1>
+      <g:form action="sueldoPdf" >
+        <g:textField name="sueldo" required="" value="Sueldo" />
+        <g:submitButton name="Buscar" class="save" value="Buscar" />         
+      </g:form>
+      
+      <h1>Instituciones con mejores promedios</h1>
+      <g:form action="promedioPdf" >        
+        <g:submitButton name="Buscar" class="save" value="Buscar" />         
+      </g:form>
+      
+      <h1>Buscar por habilidad</h1>
+      <g:form action="habilidadPdf" >
+        <g:textField name="habilidad" required="" value="Habilidad" />
+        <g:submitButton name="Buscar" class="save" value="Buscar" />         
+      </g:form>
+      
     </div>
   </body>
 </html>

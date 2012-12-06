@@ -33,9 +33,15 @@ class ReporteoController {
         redirect (view:'notFound')
     }
     
+    def puestoPdf(){
+        def Saction = "buscarPorPuesto"
+        def parameters = "?puesto=${params.puesto}"
+        reporteAPdf(Saction, parameters)
+    }
+    
     def buscarPorPuesto(){
         def sql
-        def resultado
+        def resualtado
         sql = SqlFactory.getSqlInstance()
         resultado = sql.rows("select p.nombre as PERSONA, condi.puesto as PUESTO, cont.mail as MAIL, cont.telefono_celular as CELULAR, cont.telefono_local as TELEFONO_PARTICULAR"+
             ", rs.perfil_url as PERFIL, rs.red_social as RED_SOCIAL"+
@@ -51,6 +57,12 @@ class ReporteoController {
         [reporte: resultado]
         else
         [reporte: new Object()]
+    }
+    
+    def sueldoPdf(){
+        def Saction = "buscarPorSueldo"
+        def parameters = "?sueldo=${params.sueldo}"
+        reporteAPdf(Saction, parameters)
     }
     
     def buscarPorSueldo(){
@@ -69,6 +81,12 @@ class ReporteoController {
         [reporte: new Object()]
     }
     
+    def promedioPdf(){
+        def Saction = "instPorPromedio"
+        def parameters = ""
+        reporteAPdf(Saction, parameters)
+    }
+    
     def instPorPromedio(){
         def sql
         def resultado
@@ -80,6 +98,12 @@ class ReporteoController {
         [reporte: resultado]
         else
         [reporte: new Object()]
+    }
+    
+    def habilidadPdf(){
+        def Saction = "buscarPorHabilidad"
+        def parameters = "?habilidad=${params.habilidad}"
+        reporteAPdf(Saction, parameters)
     }
     
     def buscarPorHabilidad(){
