@@ -14,15 +14,13 @@
 
     <link rel="stylesheet" href="${resource(dir: 'css/button', file: 'style3.css')}" type="text/css">   
     <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css' />
-    <title>Curriculums</title>
+    
     <script type="text/javascript">
-      function dirigir(controller, action, elems) {
-        var idioma = document.getElementById('idioma').innerHTML;
-        var nivel = document.getElementById('nivel').innerHTML;
-        if(nivel != '' && nivel != '')
-          window.location ="${createLink(controller:'reporteo', action: "buscarPorIdiomaYNivel", params: [idioma: idioma, nivel: nivel] )}";
+      function cleanInput(id){
+        document.getElementById(id).innerHTML = '';
       }
     </script>
+    <title>Curriculums</title>
   </head>
   <body>
     <div class="nav" role="navigation">
@@ -36,6 +34,15 @@
     </div>
 
     <div class="button-wrapper-large">
+
+      <h1>Buscar por idioma y nivel</h1>
+      <g:form action="idiomaNivelPdf" >
+        <g:textField name="idioma" required="" value="Idioma" onClick="cleanInput('idoma')"/>
+        <g:textField name="nivel" required="" value="Nivel"/>
+
+        <g:submitButton name="Buscar" class="save" value="Buscar" />         
+
+      </g:form>
 
       <a href="#" onClick="dirigir('wizard','reportUno',['idioma','nivel'])" class="a-btn">          
         <span class="a-btn-text">Buscar por idioma</span>         

@@ -8,6 +8,13 @@ class ReporteoController {
     @Secured(['ROLE_ADMIN'])
     def index() { }
     
+    def notFound(){}
+    
+    def idiomaNivelPdf(){        
+        def Saction = "buscarPorIdiomaYNivel"
+        def parameters = "?nivel=$params.nivel&idioma=${params.idioma}"
+        reporteAPdf(Saction, parameters)
+    }
     
     def buscarPorIdiomaYNivel(){
         def sql
@@ -21,9 +28,9 @@ class ReporteoController {
                              "(select * from user P inner join user_idioma IP on P.id = IP.user_idiomas_id) " +
                              "as DER where C.nivel like '$params.nivel' and I.idioma like '$params.idioma'") 
         if(resultado)
-            [reporte: resultado]
+        [reporte: resultado]
         else
-            [reporte: new Object()]      
+        redirect (view:'notFound')
     }
     
     def buscarPorPuesto(){
@@ -41,9 +48,9 @@ class ReporteoController {
             "on rs.idredSocial=red_social_id "+
             "where condi.puesto like $params.puesto")
         if(resultado)
-            [reporte: resultado]
+        [reporte: resultado]
         else
-            [reporte: new Object()]
+        [reporte: new Object()]
     }
     
     def buscarPorSueldo(){
@@ -57,9 +64,9 @@ class ReporteoController {
             "on P.condicion_id = C.idCondicion) as DER"+
             "where DER.sueldo like $params.sueldo") 
         if(resultado)
-            [reporte: resultado]
+        [reporte: resultado]
         else
-            [reporte: new Object()]
+        [reporte: new Object()]
     }
     
     def instPorPromedio(){
@@ -70,9 +77,9 @@ class ReporteoController {
             "from escuela order by E.promedio DESC) as PromedioGeneral"+
             "from institucion as INS inner join escuela as E on INS.IdInstitucion = E.institucion_id ")
         if(resultado)
-            [reporte: resultado]
+        [reporte: resultado]
         else
-            [reporte: new Object()]
+        [reporte: new Object()]
     }
     
     def buscarPorHabilidad(){
@@ -91,8 +98,31 @@ class ReporteoController {
         "inner join condicion as CO on P.condicion_id = CO.idCondicion"+
         "where H.habilidad like $params.habilidad")
         if(resultado)
-            [reporte: resultado]
+        [reporte: resultado]
         else
-            [reporte: new Object()]
+        [reporte: new Object()]
+    }
+    
+    def reporteAPdf(def Saction, def parameters){
+        def out = new StringBuilder()
+        def err = new StringBuilder()    
+        def proc = "wkhtmltopdf http://localhost:8080/curriculums/reporteo/${Saction}${parameters} reporte.pdf".execute()
+        proc.waitForProcessOutput(out, err)
+        if (out) println "out:\n$out"
+        if (err) println "err:\n$err"
+        
+        FileInputStream pdfImg = new FileInputStream("reporte.pdf")
+
+        // I then use needed document information to set up the rest of the response attributes to set up other parameters:
+
+        //sresponse.setContentLength(pdfImg.documentSize)
+        response.contentType = 'application/pdf' // or the appropriate image content type
+
+        // Groovy allows me to append my pdf image to the outputstream of the response object. then I flush it and can also close it.
+
+        response.outputStream << pdfImg
+        response.outputStream.flush()
+        response.outputStream.close()
+        "rm reporte.pdf".execute()
     }
 }
